@@ -1,10 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-const NotFoundPage = () => (
-  <div>
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </div>
-)
+function NotFoundPage() {
+  return (
+    <section className="paragraph">
+      <h1 className="paragraph__title">404 - Not found</h1>
+      <p className="paragraph__text">ou just hit a route that doesn&#39;t exist... the sadness.</p>
+      <p className="paragraph__text">
+        <Link to="/">Go back to homepage</Link>
+      </p>
+    </section>
+  );
+}
 
-export default NotFoundPage
+export default NotFoundPage;

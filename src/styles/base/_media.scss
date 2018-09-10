@@ -1,0 +1,19 @@
+$screens: (
+  'sm': 420px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': $container-max-width,
+);
+
+@function media-min-width($screens-name) {
+  @return ('only screen and (min-width: #{get($screens, $screens-name)})');
+}
+
+$screen-sm: media-min-width('sm');
+$screen-md: media-min-width('md');
+$screen-lg: media-min-width('lg');
+$screen-xl: media-min-width('xl');
+
+$screen-only-xs: 'only screen and (max-width: #{get($screens, 'sm') - 1px})';
+$screen-only-sm: 'only screen and (min-width: #{get($screens, 'sm')}) and (max-width: #{get($screens, 'md') - 1px})';
+$screen-only-md: 'only screen and (min-width: #{get($screens, 'md')}) and (max-width: #{get($screens, 'lg') - 1px})';

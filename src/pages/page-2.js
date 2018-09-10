@@ -1,12 +1,16 @@
-import React from 'react'
-import Link from 'gatsby-link'
+import React from 'react';
+import Link from 'gatsby-link';
 
-const SecondPage = () => (
-  <div>
-    <h1>Hi from the second page</h1>
-    <p>Welcome to page 2</p>
-    <Link to="/">Go back to the homepage</Link>
-  </div>
-)
+function SecondPage() {
+  return (
+    <section className="paragraph">
+      <h1 className="paragraph__title">Hi from the second page</h1>
+      <p className="paragraph__text">Welcome to page 2.</p>
+      <p className="paragraph__text">
+        <Link to="/">Go back to the homepage</Link>
+      </p>
+    </section>
+  );
+}
 
-export default SecondPage
+export default SecondPage;

@@ -1,13 +1,17 @@
-import React from 'react'
-import Link from 'gatsby-link'
+import React from 'react';
+import Link from 'gatsby-link';
 
-const IndexPage = () => (
-  <div>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
-  </div>
-)
+function IndexPage() {
+  return (
+    <section className="paragraph">
+      <h1 className="paragraph__title">Hi people</h1>
+      <p className="paragraph__text">Welcome to your new Gatsby site.</p>
+      <p className="paragraph__text">Now go build something great.</p>
+      <p className="paragraph__text">
+        <Link to="/page-2/">Go to page 2</Link>
+      </p>
+    </section>
+  );
+}
 
-export default IndexPage
+export default IndexPage;
