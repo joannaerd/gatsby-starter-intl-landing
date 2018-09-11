@@ -2,6 +2,7 @@
   position: relative;
   height: $navigation-height;
   margin-bottom: get($spacings, 'large');
+  background-color: $c-white;
   box-shadow: get($shadows);
 
   &__content {

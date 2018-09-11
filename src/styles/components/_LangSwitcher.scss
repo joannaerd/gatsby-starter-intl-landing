@@ -1,0 +1,13 @@
+.LangSwitcher {
+  display: flex;
+
+  &__link {
+    margin-left: get($spacings);
+    font-weight: get($font-weights, 'bold');
+
+    &--active {
+      font-weight: get($font-weights);
+      color: $c-text;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.Footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: $footer-height;
+  background-color: $c-white;
+  box-shadow: get($shadows);
+
+  &__content {
+    @extend %container;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+}

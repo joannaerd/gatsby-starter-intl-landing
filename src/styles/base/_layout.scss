@@ -8,3 +8,7 @@
 .container {
   @extend %container;
 }
+
+.main-content {
+  margin-bottom: $footer-height;
+}

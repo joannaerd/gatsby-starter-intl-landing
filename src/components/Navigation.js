@@ -5,6 +5,7 @@ function Navigation({ siteTitle }) {
   return (
     <nav className="Navigation">
       <div className="Navigation__content">
+        {/*TODO: refactor routing*/}
         <Link to="/" className="Navigation__link">
           {siteTitle}
         </Link>

@@ -1,35 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { IntlProvider } from 'react-intl';
 
-import Navigation from '../components/Navigation';
 import '../styles/main.scss';
+import Footer from '../components/Footer';
+import Navigation from '../components/Navigation';
 
-const Layout = ({ children, data }) => (
-  <div>
-    <Helmet
-      title={data.site.siteMetadata.title}
-      meta={[{ name: 'description', content: 'Sample' }, { name: 'keywords', content: 'sample, something' }]}
-    />
-
-    <Navigation siteTitle={data.site.siteMetadata.title} />
-
-    <div className="container">{children()}</div>
-  </div>
-);
-
-Layout.propTypes = {
+const propTypes = {
   children: PropTypes.func,
 };
 
-export default Layout;
+function TemplateWrapper({ children, locale, messages }) {
+  const defaultLocale = 'pl'; // TODO: get this from settings
 
-export const query = graphql`
-  query SiteTitleQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`;
+  return (
+    <IntlProvider locale={locale} messages={messages} defaultLocale={defaultLocale}>
+      <div className="main-content">
+        <Navigation siteTitle={'Gatsby Intl Landing'} /> {/*TODO: get this from settings*/}
+        {children()}
+        <Footer availableLangs={['pl', 'en']} />
+      </div>
+    </IntlProvider>
+  );
+}
+
+TemplateWrapper.propTypes = propTypes;
+
+export default TemplateWrapper;
