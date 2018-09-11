@@ -1,6 +1,7 @@
 ---
 locale: "en"
-slug: "index"
+type: "index"
+slug: ""
 template: "IndexPage"
 title: "Index page!"
 ---

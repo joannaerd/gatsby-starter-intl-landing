@@ -9,12 +9,12 @@
     @extend %container;
 
     display: flex;
-    justify-content: space-between;
     height: 100%;
   }
 
   &__menu {
     display: flex;
+    margin-left: auto;
 
     & > *:not(:last-child) {
       margin-right: get($spacings);

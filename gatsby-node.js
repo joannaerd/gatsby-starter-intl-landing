@@ -1,8 +1,10 @@
+import { getPath } from './src/helpers/getPath';
+
 const path = require('path');
 const _ = require('lodash');
-const { createFilePath } = require('gatsby-source-filesystem');
+const langConfig = require('./lang-config');
 
-const defaultLocale = 'pl';
+const { availableLocales } = langConfig;
 
 exports.createPages = async ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators;
@@ -21,29 +23,22 @@ exports.createPages = async ({ boundActionCreators, graphql }) => {
     }
   }`);
 
-  _(pages.edges).groupBy('node.frontmatter.locale').forOwn((postsInLocale, locale) => {
-    createPage({
-      path: (locale === defaultLocale ? '/' : locale),
-      component: path.resolve(`src/templates/IndexPage.js`),
-      layout: locale,
-      context: {
-        locale
-      },
-    });
-  });
+  const pagesByLocale = Object.entries(_.groupBy(pages.edges, 'node.frontmatter.locale'));
 
-  pages.edges.forEach(({ node }) => {
-    const { locale, slug, template } = node.frontmatter;
+  pagesByLocale.forEach(([locale, edges]) => {
+    if (availableLocales.includes(locale)) {
+      edges.forEach(({ node: { frontmatter: { locale, slug, template } } }) => {
+        const pathProp = getPath({ locale, slug });
 
-    if (slug !== 'index') {
-      createPage({
-        path: `/${locale === defaultLocale ? '' : `${locale}/`}${slug}`,
-        component: path.resolve(`src/templates/${template}.js`),
-        layout: locale,
-        context: {
-          locale,
-          slug,
-        },
+        createPage({
+          path: pathProp,
+          component: path.resolve(`src/templates/${template}.js`),
+          layout: locale,
+          context: {
+            locale,
+            slug,
+          },
+        });
       });
     }
   });

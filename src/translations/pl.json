@@ -1,4 +1,7 @@
 {
+  "navigation.pages.index": "Strona głowna",
+  "navigation.pages.privacy": "O prywatności",
+
   "lang.change": "Zmień język",
   "lang.names.en": "English",
   "lang.names.pl": "Polski"

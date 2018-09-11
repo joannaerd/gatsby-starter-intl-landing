@@ -1,6 +1,7 @@
 ---
 locale: "pl"
-slug: "index"
+type: "index"
+slug: ""
 template: "IndexPage"
 title: "Strona Główna!"
 ---

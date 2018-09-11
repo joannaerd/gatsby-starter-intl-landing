@@ -1,20 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import classNames from 'classnames';
 import Link from 'gatsby-link';
+import langConfig from '../../lang-config';
 
-const propTypes = {
-  availableLangs: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
-
-function LangSwitcher({ intl, availableLangs }) {
+function LangSwitcher({ intl }) {
   return (
     <div className="LangSwitcher">
       <FormattedMessage id="lang.change" />:
-      {availableLangs.map(lang => {
+      {langConfig.availableLocales.map(lang => {
         const classes = classNames(['LangSwitcher__link', { 'LangSwitcher__link--active': lang === intl.locale }]);
-        const path = lang === intl.defaultLocale ? '' : lang;
+        const path = lang === langConfig.defaultLocale ? '' : lang;
 
         return (
           <Link to={`/${path}`} className={classes} key={lang}>
@@ -25,7 +21,5 @@ function LangSwitcher({ intl, availableLangs }) {
     </div>
   );
 }
-
-LangSwitcher.propTypes = propTypes;
 
 export default injectIntl(LangSwitcher);

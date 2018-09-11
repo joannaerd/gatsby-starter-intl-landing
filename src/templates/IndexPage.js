@@ -1,27 +1,16 @@
-import React, { Component } from 'react';
-import Helmet from '../components/Helmet';
+import React from 'react';
 
-class IndexPage extends Component {
-  render() {
-    const { data } = this.props;
-    const { title } = data.markdownRemark.frontmatter;
-    const helmet = {};
+function IndexPage({ data }) {
+  const { title } = data.pageData.frontmatter;
 
-    return (
-      <main className="container">
-        <Helmet {...helmet} />
-
-        {title}
-      </main>
-    );
-  }
+  return <p>{title}</p>;
 }
 
 export default IndexPage;
 
 export const query = graphql`
   query IndexDataByLocale($locale: String!) {
-    markdownRemark(frontmatter: { slug: { eq: "index" }, locale: { eq: $locale } }) {
+    pageData: markdownRemark(frontmatter: { type: { eq: "index" }, locale: { eq: $locale } }) {
       frontmatter {
         title
       }

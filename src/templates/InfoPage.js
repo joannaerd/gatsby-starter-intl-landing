@@ -1,12 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class InfoPage extends Component {
-  render() {
-    const { data } = this.props;
-    const { title } = data.markdownRemark.frontmatter;
+function InfoPage({ data }) {
+  const { title } = data.markdownRemark.frontmatter;
 
-    return <main className="container">info: {title}</main>;
-  }
+  return <p>infoPage: {title}</p>;
 }
 
 export default InfoPage;
