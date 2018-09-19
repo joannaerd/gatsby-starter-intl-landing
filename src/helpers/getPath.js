@@ -1,4 +1,4 @@
-import langConfig from '../../lang-config';
+const langConfig = require('../../lang-config');
 
 const getPath = ({ locale, slug }) => {
   const langPath = locale === langConfig.defaultLocale ? '' : `/${locale}`;

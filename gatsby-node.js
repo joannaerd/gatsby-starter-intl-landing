@@ -1,8 +1,7 @@
-import { getPath } from './src/helpers/getPath';
-
 const path = require('path');
 const _ = require('lodash');
 const langConfig = require('./lang-config');
+const getPath = require('./src/helpers/getPath');
 
 const { availableLocales } = langConfig;
 
@@ -28,7 +27,7 @@ exports.createPages = async ({ boundActionCreators, graphql }) => {
   pagesByLocale.forEach(([locale, edges]) => {
     if (availableLocales.includes(locale)) {
       edges.forEach(({ node: { frontmatter: { locale, slug, template } } }) => {
-        const pathProp = getPath({ locale, slug });
+        const pathProp = getPath.getPath({ locale, slug });
 
         createPage({
           path: pathProp,
