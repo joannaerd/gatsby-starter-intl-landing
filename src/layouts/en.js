@@ -10,17 +10,16 @@ addLocaleData(localeData);
 export default props => <Index {...props} locale="en" messages={messages} />;
 
 export const query = graphql`
-  query TemplateRoutingDataEN {
+  query TemplateDataEN {
     routingData: allMarkdownRemark(filter: { frontmatter: { locale: { eq: "en" } } }) {
       edges {
         node {
-          frontmatter {
-            type
-            slug
-            locale
-          }
+          ...routingDataFragment
         }
       }
+    }
+    helmetData: markdownRemark(frontmatter: { type: { eq: "index" }, locale: { eq: "en" } }) {
+      ...helmetDataFragment
     }
   }
 `;

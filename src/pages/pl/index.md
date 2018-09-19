@@ -3,5 +3,10 @@ locale: "pl"
 type: "index"
 slug: ""
 template: "IndexPage"
-title: "Strona Główna!"
+helmet:
+  title: "PL @ Gatsby IntL Landing"
+  description: "To jest strona główna w PL"
+  keywords: "gatsby, intl, landing, starter"
+content:
+  title: "Strona Główna!"
 ---

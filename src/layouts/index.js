@@ -20,7 +20,7 @@ function TemplateWrapper({ data, children, locale, messages }) {
     return { path, type };
   });
 
-  const helmet = {}; // TODO: refactor to proper helmet
+  const { helmet } = data.helmetData.frontmatter;
 
   return (
     <IntlProvider locale={locale} messages={messages} defaultLocale={langConfig.defaultLocale}>
@@ -40,3 +40,25 @@ function TemplateWrapper({ data, children, locale, messages }) {
 TemplateWrapper.propTypes = propTypes;
 
 export default TemplateWrapper;
+
+export const routingDataFragment = graphql`
+  fragment routingDataFragment on MarkdownRemark {
+    frontmatter {
+      type
+      slug
+      locale
+    }
+  }
+`;
+
+export const helmetDataFragment = graphql`
+  fragment helmetDataFragment on MarkdownRemark {
+    frontmatter {
+      helmet {
+        title
+        description
+        keywords
+      }
+    }
+  }
+`;
