@@ -1,7 +1,4 @@
 module.exports = {
-  siteMetadata: {
-    title: 'Gatsby Intl Landing Starter', // TODO: add proper helmets
-  },
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',

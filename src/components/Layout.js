@@ -23,12 +23,8 @@ const defaultProps = {
 };
 
 function Layout({ children, siteTitle, routes }) {
-  const helmet = {}; // TODO: refactor to proper helmet
-
   return (
     <div className="Layout">
-      <Helmet {...helmet} />
-
       <Navigation siteTitle={siteTitle} routes={routes} selectedTypes={['index', 'privacy']} />
 
       <main className="container">{children}</main>
